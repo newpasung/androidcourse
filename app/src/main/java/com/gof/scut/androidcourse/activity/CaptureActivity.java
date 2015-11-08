@@ -158,13 +158,13 @@ public class CaptureActivity extends Activity implements Callback {
 	/*
 	 * 获取带二维码的相片进行扫描
 	 */
-	public void pickPictureFromAblum(View v) {
+	/*public void pickPictureFromAblum(View v) {
 		// 打开手机中的相册
 		Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT); // "android.intent.action.GET_CONTENT"
-		innerIntent.setType("image/*");
+		innerIntent.setType("image*//*");
 		Intent wrapperIntent = Intent.createChooser(innerIntent, "选择二维码图片");
 		this.startActivityForResult(wrapperIntent, 1);
-	}
+	}*/
 
 	String photo_path;
 	ProgressDialog mProgress;
@@ -304,7 +304,7 @@ public class CaptureActivity extends Activity implements Callback {
 		return null;
 	}
 
-	// 是否开启闪光灯
+/*	// 是否开启闪光灯
 	public void IfOpenLight(View v) {
 		ifOpenLight++;
 
@@ -321,7 +321,7 @@ public class CaptureActivity extends Activity implements Callback {
 		default:
 			break;
 		}
-	}
+	}*/
 
 	private void initCamera(SurfaceHolder surfaceHolder) {
 		try {
