@@ -16,7 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        app:fab_labelStyle="@style/menu_labels_style"
+        app:fab_labelStyle="@style/fab_label_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <com.getbase.floatingactionbutton.FloatingActionButton

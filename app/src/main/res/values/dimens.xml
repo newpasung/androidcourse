@@ -4,4 +4,20 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">24dp</dimen>
+    <dimen name="margin_tiny">2dp</dimen>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_medium">24dp</dimen>
+
+    <dimen name="textsize_l1">12sp</dimen>
+    <dimen name="textsize_l2">14sp</dimen>
+    <dimen name="textsize_l3">16sp</dimen>
+    <dimen name="textsize_l4">20sp</dimen>
+    <dimen name="textsize_l5">24sp</dimen>
+    <dimen name="textsize_l6">34sp</dimen>
+    <dimen name="textsize_l7">45sp</dimen>
 </resources>

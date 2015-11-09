@@ -3,7 +3,8 @@ package com.gof.scut.androidcourse;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +59,7 @@ public class MainActivity extends Activity {
 		adapter =new MyAdapter();
 		adapter.setCards(cardList);
 		recyclerView.setAdapter(adapter);
-		recyclerView.setLayoutManager(new LinearLayoutManager(this));
+		recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 	}
 
 	protected void  iniData(){
@@ -67,6 +68,13 @@ public class MainActivity extends Activity {
 		cardList.add(new Card("刘德华","18814166584"));
 		cardList.add(new Card("张学友","18816467834"));
 		cardList.add(new Card("周润发","15487624684"));
+		cardList.add(new Card("张三","15487624684"));
+		cardList.add(new Card("李四","15487624684"));
+		cardList.add(new Card("小明","15487624684"));
+		cardList.add(new Card("小红","15487624684"));
+		cardList.add(new Card("张伟","15487624684"));
+		cardList.add(new Card("王强","15487624684"));
+		cardList.add(new Card("啊哈","15487624684"));
 	}
 
 	protected void iniListener(){
@@ -110,6 +118,13 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+			CardColor cardColor = CardColor.getCardColor();
+			int cardBgColor = getResources().getColor(cardColor.backgroundColor);
+			int cardTextColor = getResources().getColor(cardColor.textColor);
+			((MyHolder)holder).cardView.setCardBackgroundColor(cardBgColor);
+			((MyHolder)holder).textView.setTextColor(cardTextColor);
+			((MyHolder)holder).mTvphone.setTextColor(cardTextColor);
+			((MyHolder)holder).mTvcompany.setTextColor(cardTextColor);
 			((MyHolder)holder).textView.setText(cards.get(position).getName());
 			((MyHolder)holder).mTvphone.setText(cards.get(position).getPhonenumber1());
 		}
@@ -120,11 +135,15 @@ public class MainActivity extends Activity {
 		}
 
 		class MyHolder extends RecyclerView.ViewHolder{
+			CardView cardView;
 			TextView textView;
 			TextView mTvphone;
+			TextView mTvcompany;
 			public MyHolder(View itemView) {
 				super(itemView);
-				textView=(TextView)itemView.findViewById(R.id.tv_name);
+				cardView = (CardView)itemView.findViewById(R.id.card_view);
+				textView = (TextView)itemView.findViewById(R.id.tv_name);
+				mTvcompany = (TextView)itemView.findViewById(R.id.tv_company);
 				mTvphone=(TextView)itemView.findViewById(R.id.tv_phone);
 			}
 		}
