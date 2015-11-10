@@ -8,4 +8,7 @@
     <string name="label_address">地址：</string>
     <string name="label_company">公司：</string>
     <string name="label_phone">电话：</string>
+    <string name="name_format" >姓名 %s</string>
+    <string name="phone_format">电话号码 %s</string>
+    <string name="address_format">住址 %s</string>
 </resources>

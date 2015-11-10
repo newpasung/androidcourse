@@ -5,14 +5,19 @@ package com.gof.scut.androidcourse;
  */
 public class Card {
 
+    private String avatarurl;
     private String name;
     private String phonenumber1;
     private String phonenumber2;
     private String email;
-    private String adress;
+    private String address;
     public Card(String name, String phonenumber1) {
         this.name = name;
         this.phonenumber1 = phonenumber1;
+        this.phonenumber2 ="";
+        this.email="";
+        this.address="";
+        this.avatarurl="";
     }
 
     public String getEmail() {
@@ -48,10 +53,21 @@ public class Card {
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        this.address = adress;
+    }
+
+    public String getAvatarurl() {
+        if (avatarurl==null){
+            avatarurl="";
+        }
+        return avatarurl;
+    }
+
+    public void setAvatarurl(String avatarurl) {
+        this.avatarurl = avatarurl;
     }
 }

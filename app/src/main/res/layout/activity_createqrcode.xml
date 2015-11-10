@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="在这里生成二维码，什么的二维码？？我怎么知道你，activity有api"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/iv_qrcode"
+        android:scaleType="centerInside"
+        android:layout_margin="24dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

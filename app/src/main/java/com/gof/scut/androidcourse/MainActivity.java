@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,7 +16,7 @@ import android.widget.TextView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.gof.scut.androidcourse.activity.CheckResultActivity;
-import com.gof.scut.androidcourse.activity.CreateCardActivity;
+import com.gof.scut.androidcourse.activity.CardinfoActivity;
 import com.gof.scut.androidcourse.activity.CreateQRcodeActivity;
 
 import java.util.ArrayList;
@@ -49,9 +50,9 @@ public class MainActivity extends Activity {
 		floatingMenu=(FloatingActionsMenu)findViewById(R.id.floatingmenu);
 		mBtntop.setTitle("扫描二维码");
 		mBtntop.setIconDrawable(getResources().getDrawable(R.drawable.scan));
-		mBtnmiddle.setTitle("生成二维码");
+		mBtnmiddle.setTitle("我的二维码");
 		mBtnmiddle.setIconDrawable(getResources().getDrawable(R.drawable.qrcode));
-		mBtnbottom.setTitle("新建名片");
+		mBtnbottom.setTitle("我的名片");
 		mBtnbottom.setIconDrawable(getResources().getDrawable(R.drawable.card));
 	}
 
@@ -63,18 +64,7 @@ public class MainActivity extends Activity {
 	}
 
 	protected void  iniData(){
-		//TODO 显示什么数据
-		cardList =new ArrayList<>();
-		cardList.add(new Card("刘德华","18814166584"));
-		cardList.add(new Card("张学友","18816467834"));
-		cardList.add(new Card("周润发","15487624684"));
-		cardList.add(new Card("张三","15487624684"));
-		cardList.add(new Card("李四","15487624684"));
-		cardList.add(new Card("小明","15487624684"));
-		cardList.add(new Card("小红","15487624684"));
-		cardList.add(new Card("张伟","15487624684"));
-		cardList.add(new Card("王强","15487624684"));
-		cardList.add(new Card("啊哈","15487624684"));
+		this.cardList=((MyApplication)getApplicationContext()).getCardList();
 	}
 
 	protected void iniListener(){
@@ -89,7 +79,7 @@ public class MainActivity extends Activity {
 		mBtnbottom.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this, CreateCardActivity.class));
+				startActivity(new Intent(MainActivity.this, CardinfoActivity.class));
 			}
 		});
 		mBtnmiddle.setOnClickListener(new OnClickListener() {
@@ -117,7 +107,7 @@ public class MainActivity extends Activity {
 		}
 
 		@Override
-		public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+		public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 			CardColor cardColor = CardColor.getCardColor();
 			int cardBgColor = getResources().getColor(cardColor.backgroundColor);
 			int cardTextColor = getResources().getColor(cardColor.textColor);
@@ -127,6 +117,17 @@ public class MainActivity extends Activity {
 			((MyHolder)holder).mTvcompany.setTextColor(cardTextColor);
 			((MyHolder)holder).textView.setText(cards.get(position).getName());
 			((MyHolder)holder).mTvphone.setText(cards.get(position).getPhonenumber1());
+			((MyHolder)holder).cardView.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent =new Intent();
+					intent.setClass(MainActivity.this, CardinfoActivity.class);
+					Bundle bundle =new Bundle();
+					bundle.putInt("index", position);
+					intent.putExtra("data", bundle);
+					startActivity(intent);
+				}
+			});
 		}
 
 		@Override
@@ -150,4 +151,14 @@ public class MainActivity extends Activity {
 
 	}
 
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode==KeyEvent.KEYCODE_BACK){
+			if (floatingMenu.isExpanded()){
+				floatingMenu.collapse();
+				return true;
+			}
+		}
+		return false;
+	}
 }
