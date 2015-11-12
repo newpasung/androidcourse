@@ -21,6 +21,7 @@ import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
@@ -29,6 +30,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.gof.scut.androidcourse.MainActivity;
 import com.gof.scut.androidcourse.R;
 import com.gof.scut.androidcourse.camera.CameraManager;
 import com.gof.scut.androidcourse.decoding.CaptureActivityHandler;
@@ -127,6 +129,15 @@ public class CaptureActivity extends Activity implements Callback {
 	protected void onDestroy() {
 		inactivityTimer.shutdown();
 		super.onDestroy();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode==KeyEvent.KEYCODE_BACK){
+			startActivity(new Intent(this, MainActivity.class));
+			return true;
+		}
+		return false;
 	}
 
 	/**

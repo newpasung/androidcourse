@@ -25,7 +25,7 @@ public class CheckResultActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkresult);
         mTvdata=(TextView)findViewById(R.id.tv_text);
-        shouldRedirection = true;//标识该跳转到哪个界面，true为扫描二维码的界面，false为主界面
+        shouldRedirection = true;
     }
 
     @Override
@@ -36,9 +36,6 @@ public class CheckResultActivity extends Activity {
             intent.setClass(this, CaptureActivity.class);
             startActivityForResult(intent,REQUESTCODE_SCAN_PIC);
             shouldRedirection = false;
-        }else {//如果是在扫二维码的界面点了回退键，返回主界面而不是该界面
-            startActivity(new Intent(this, MainActivity.class));
-            shouldRedirection = true;
         }
     }
 
