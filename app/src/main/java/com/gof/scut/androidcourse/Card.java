@@ -11,13 +11,45 @@ public class Card {
     private String phonenumber2;
     private String email;
     private String address;
-    public Card(String name, String phonenumber1) {
+
+    private int backgroundColor;
+    private int textColor;
+
+    public Card(String name, String phonenumber1, int color) {
         this.name = name;
         this.phonenumber1 = phonenumber1;
         this.phonenumber2 ="";
         this.email="";
         this.address="";
         this.avatarurl="";
+
+        switch (color)
+        {
+            case CardColor.BLUE:
+                backgroundColor = R.color.blue;
+                textColor = R.color.white;
+                break;
+            case CardColor.GREEN:
+                backgroundColor = R.color.green;
+                textColor = R.color.white;
+                break;
+            case CardColor.PINK:
+                backgroundColor = R.color.pink;
+                textColor = R.color.white;
+                break;
+            case CardColor.WHITE:
+                backgroundColor = R.color.white;
+                textColor = R.color.black;
+                break;
+            case CardColor.YELLOW:
+                backgroundColor = R.color.yellow;
+                textColor = R.color.black;
+                break;
+            default:
+                backgroundColor = R.color.white;
+                textColor = R.color.black;
+                break;
+        }
     }
 
     public String getEmail() {
@@ -69,5 +101,22 @@ public class Card {
 
     public void setAvatarurl(String avatarurl) {
         this.avatarurl = avatarurl;
+    }
+
+
+    public int getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public int getTextColor() {
+        return textColor;
+    }
+
+    class CardColor {
+        public static final int BLUE = 1;
+        public static final int GREEN = 2;
+        public static final int YELLOW = 3;
+        public static final int PINK = 4;
+        public static final int WHITE = 5;
     }
 }

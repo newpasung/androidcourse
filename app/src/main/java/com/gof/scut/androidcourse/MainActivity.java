@@ -43,16 +43,10 @@ public class MainActivity extends Activity {
 
 	protected void iniUI(){
 		recyclerView=(RecyclerView)findViewById(R.id.recyclerview);
-		mBtnScan =(FloatingActionButton)findViewById(R.id.btn_top);
-		mBtnMyQRCode =(FloatingActionButton)findViewById(R.id.btn_middle);
-		mBtnMyCard =(FloatingActionButton)findViewById(R.id.btn_bottom);
+		mBtnScan =(FloatingActionButton)findViewById(R.id.btn_scan);
+		mBtnMyQRCode =(FloatingActionButton)findViewById(R.id.btn_my_qrcode);
+		mBtnMyCard =(FloatingActionButton)findViewById(R.id.btn_my_card);
 		floatingMenu=(FloatingActionsMenu)findViewById(R.id.floatingmenu);
-		mBtnScan.setTitle("扫描二维码");
-		mBtnScan.setIconDrawable(getResources().getDrawable(R.drawable.scan));
-		mBtnMyQRCode.setTitle("我的二维码");
-		mBtnMyQRCode.setIconDrawable(getResources().getDrawable(R.drawable.qrcode));
-		mBtnMyCard.setTitle("我的名片");
-		mBtnMyCard.setIconDrawable(getResources().getDrawable(R.drawable.card));
 	}
 
 	protected void iniAdapter(){
@@ -107,9 +101,8 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-			CardColor cardColor = CardColor.getCardColor();
-			int cardBgColor = getResources().getColor(cardColor.backgroundColor);
-			int cardTextColor = getResources().getColor(cardColor.textColor);
+			int cardBgColor = getResources().getColor(cards.get(position).getBackgroundColor());
+			int cardTextColor = getResources().getColor(cards.get(position).getTextColor());
 			((MyHolder)holder).cardView.setCardBackgroundColor(cardBgColor);
 			((MyHolder)holder).textView.setTextColor(cardTextColor);
 			((MyHolder)holder).mTvphone.setTextColor(cardTextColor);
@@ -119,9 +112,9 @@ public class MainActivity extends Activity {
 			((MyHolder)holder).cardView.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					Intent intent =new Intent();
+					Intent intent = new Intent();
 					intent.setClass(MainActivity.this, CardinfoActivity.class);
-					Bundle bundle =new Bundle();
+					Bundle bundle = new Bundle();
 					bundle.putInt("index", position);
 					intent.putExtra("data", bundle);
 					startActivity(intent);

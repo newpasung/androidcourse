@@ -23,17 +23,17 @@ public class MyApplication extends Application {
     private void iniData(){
         cardList = new ArrayList<>();
         //第一张是自己
-        cardList.add(new Card("郭佳哲","10086"));
-        cardList.add(new Card("刘德华","18814166584"));
-        cardList.add(new Card("张学友","18816467834"));
-        cardList.add(new Card("周润发","15487624684"));
-        cardList.add(new Card("张三","15487624684"));
-        cardList.add(new Card("李四","15487624684"));
-        cardList.add(new Card("小明","15487624684"));
-        cardList.add(new Card("小红","15487624684"));
-        cardList.add(new Card("张伟","15487624684"));
-        cardList.add(new Card("王强", "15487624684"));
-        cardList.add(new Card("啊哈", "15487624684"));
+        cardList.add(new Card("郭佳哲","10086", Card.CardColor.BLUE));
+        cardList.add(new Card("刘德华","18814166584", Card.CardColor.YELLOW));
+        cardList.add(new Card("张学友","18816467834", Card.CardColor.WHITE));
+        cardList.add(new Card("周润发","15487624684", Card.CardColor.PINK));
+        cardList.add(new Card("张三","15487624684", Card.CardColor.GREEN));
+        cardList.add(new Card("李四","15487624684", Card.CardColor.BLUE));
+        cardList.add(new Card("小明","15487624684", Card.CardColor.WHITE));
+        cardList.add(new Card("小红","15487624684", Card.CardColor.GREEN));
+        cardList.add(new Card("张伟","15487624684", Card.CardColor.PINK));
+        cardList.add(new Card("王强", "15487624684", Card.CardColor.WHITE));
+        cardList.add(new Card("啊哈", "15487624684", Card.CardColor.BLUE));
     }
 
     public List<Card> getCardList(){
