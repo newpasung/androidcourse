@@ -57,13 +57,13 @@ public class MainActivity extends Activity {
 	}
 
 	protected void iniAdapter(){
-		adapter =new MyAdapter();
+		adapter = new MyAdapter();
 		adapter.setCards(cardList);
 		recyclerView.setAdapter(adapter);
 		recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 	}
 
-	protected void  iniData(){
+	protected void iniData(){
 		this.cardList=((MyApplication)getApplicationContext()).getCardList();
 	}
 
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
 		mBtntop.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent =new Intent();
+				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, CheckResultActivity.class);
 				startActivity(intent);
 			}
