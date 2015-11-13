@@ -1,7 +1,11 @@
 package com.gof.scut.androidcourse.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,25 +20,44 @@ public class CardinfoActivity extends Activity {
 
     private ImageView mIvAvatar;
     private TextView mTvname;
-    private TextView mTvaddress;
+    private TextView mTvCompany;
     private TextView mTvphone;
-    Card mCard;
+    private Button mBtnShowQrcode;
+    private Card mCard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardinfo);
         iniUI();
         showInfo();
+        iniListener();
     }
 
-    protected void iniUI(){
-        mIvAvatar=(ImageView)findViewById(R.id.iv_avatar);
-        mTvname=(TextView)findViewById(R.id.tv_name);
-        mTvphone=(TextView)findViewById(R.id.tv_phone);
-        mTvaddress=(TextView)findViewById(R.id.tv_address);
+    private void iniUI() {
+        mIvAvatar = (ImageView) findViewById(R.id.iv_avatar);
+        mTvname = (TextView) findViewById(R.id.tv_name);
+        mTvCompany = (TextView) findViewById(R.id.tv_company);
+        mTvphone = (TextView) findViewById(R.id.tv_phone);
+        mBtnShowQrcode = (Button) findViewById(R.id.btn_show_qrcode);
     }
 
-    private void showInfo(){
+    private void iniListener() {
+        mBtnShowQrcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CardinfoActivity.this, CreateQRcodeActivity.class);
+                if(getIntent().getBundleExtra("data") != null) {
+                    int index = getIntent().getBundleExtra("data").getInt("index");
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("index", index);
+                    intent.putExtra("data", bundle);
+                }
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void showInfo() {
         if(getIntent().getBundleExtra("data")!=null){
             Bundle data =getIntent().getBundleExtra("data");
             int index =data.getInt("index");
