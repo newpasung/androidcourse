@@ -30,7 +30,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.gof.scut.androidcourse.MainActivity;
 import com.gof.scut.androidcourse.R;
 import com.gof.scut.androidcourse.camera.CameraManager;
 import com.gof.scut.androidcourse.decoding.CaptureActivityHandler;

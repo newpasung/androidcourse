@@ -3,14 +3,9 @@ package com.gof.scut.androidcourse.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.gof.scut.androidcourse.BitmapUtil;
-import com.gof.scut.androidcourse.MainActivity;
 import com.gof.scut.androidcourse.R;
-import com.google.zxing.WriterException;
 
 /**
  * Created by Administrator on 2015/11/8.
