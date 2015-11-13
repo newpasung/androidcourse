@@ -110,6 +110,7 @@ public class MainActivity extends Activity {
 			((MyHolder)holder).mTvcompany.setTextColor(cardTextColor);
 			((MyHolder)holder).textView.setText(cards.get(position).getName());
 			((MyHolder)holder).mTvphone.setText(cards.get(position).getPhonenumber1());
+			((MyHolder)holder).mTvcompany.setText(cards.get(position).getCompany());
 			((MyHolder)holder).cardView.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {

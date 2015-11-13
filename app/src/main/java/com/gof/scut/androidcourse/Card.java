@@ -11,13 +11,15 @@ public class Card {
     private String phonenumber2;
     private String email;
     private String address;
+    private String company;
 
     private int backgroundColor;
     private int textColor;
 
-    public Card(String name, String phonenumber1, int color) {
+    public Card(String name, String phonenumber1, String company, int color) {
         this.name = name;
         this.phonenumber1 = phonenumber1;
+        this.company = company;
         this.phonenumber2 ="";
         this.email="";
         this.address="";
@@ -90,6 +92,11 @@ public class Card {
 
     public void setAdress(String adress) {
         this.address = adress;
+    }
+
+
+    public String getCompany() {
+        return company;
     }
 
     public String getAvatarurl() {

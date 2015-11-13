@@ -18,9 +18,9 @@ import com.gof.scut.androidcourse.R;
 public class CardinfoActivity extends Activity {
 
     private ImageView mIvAvatar;
-    private TextView mTvname;
+    private TextView mTvName;
     private TextView mTvCompany;
-    private TextView mTvphone;
+    private TextView mTvPhone;
     private Button mBtnShowQrcode;
     private Card mCard;
     @Override
@@ -34,9 +34,9 @@ public class CardinfoActivity extends Activity {
 
     private void iniUI() {
         mIvAvatar = (ImageView) findViewById(R.id.iv_avatar);
-        mTvname = (TextView) findViewById(R.id.tv_name);
+        mTvName = (TextView) findViewById(R.id.tv_name);
         mTvCompany = (TextView) findViewById(R.id.tv_company);
-        mTvphone = (TextView) findViewById(R.id.tv_phone);
+        mTvPhone = (TextView) findViewById(R.id.tv_phone);
         mBtnShowQrcode = (Button) findViewById(R.id.btn_show_qrcode);
     }
 
@@ -65,7 +65,9 @@ public class CardinfoActivity extends Activity {
         else{
             mCard = ((MyApplication)getApplicationContext()).getMyCard();
         }
-        mTvname.setText(String.format(getString(R.string.name_format),mCard.getName()));
+        mTvName.setText(String.format(getString(R.string.name_format), mCard.getName()));
+        mTvCompany.setText(String.format(getString(R.string.company_format),mCard.getCompany()));
+        mTvPhone.setText(String.format(getString(R.string.phone_format),mCard.getPhonenumber1()));
         mIvAvatar.setImageResource(R.drawable.user_avatar);
     }
 }
