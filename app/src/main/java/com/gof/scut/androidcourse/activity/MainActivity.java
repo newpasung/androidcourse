@@ -1,4 +1,4 @@
-package com.gof.scut.androidcourse;
+package com.gof.scut.androidcourse.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,10 +15,9 @@ import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
-import com.gof.scut.androidcourse.activity.AddCardActivity;
-import com.gof.scut.androidcourse.activity.CheckResultActivity;
-import com.gof.scut.androidcourse.activity.CardinfoActivity;
-import com.gof.scut.androidcourse.activity.ShowQRcodeActivity;
+import com.gof.scut.androidcourse.Card;
+import com.gof.scut.androidcourse.MyApplication;
+import com.gof.scut.androidcourse.R;
 
 import java.util.List;
 
