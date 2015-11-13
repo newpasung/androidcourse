@@ -3,7 +3,6 @@ package com.gof.scut.androidcourse.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -45,7 +44,7 @@ public class CardinfoActivity extends Activity {
         mBtnShowQrcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CardinfoActivity.this, CreateQRcodeActivity.class);
+                Intent intent = new Intent(CardinfoActivity.this, ShowQRcodeActivity.class);
                 if(getIntent().getBundleExtra("data") != null) {
                     int index = getIntent().getBundleExtra("data").getInt("index");
                     Bundle bundle = new Bundle();

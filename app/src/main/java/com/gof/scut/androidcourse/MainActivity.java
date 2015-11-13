@@ -15,9 +15,10 @@ import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.gof.scut.androidcourse.activity.AddCardActivity;
 import com.gof.scut.androidcourse.activity.CheckResultActivity;
 import com.gof.scut.androidcourse.activity.CardinfoActivity;
-import com.gof.scut.androidcourse.activity.CreateQRcodeActivity;
+import com.gof.scut.androidcourse.activity.ShowQRcodeActivity;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class MainActivity extends Activity {
 	//下面四个是右下角的button
 	FloatingActionsMenu floatingMenu;
 	FloatingActionButton mBtnScan;
-	FloatingActionButton mBtnMyQRCode;
+	FloatingActionButton mBtnAddCard;
 	FloatingActionButton mBtnMyCard;
 	List<Card> cardList;
 	MyAdapter adapter ;
@@ -44,7 +45,7 @@ public class MainActivity extends Activity {
 	protected void iniUI(){
 		recyclerView=(RecyclerView)findViewById(R.id.recyclerview);
 		mBtnScan =(FloatingActionButton)findViewById(R.id.btn_scan);
-		mBtnMyQRCode =(FloatingActionButton)findViewById(R.id.btn_my_qrcode);
+		mBtnAddCard =(FloatingActionButton)findViewById(R.id.btn_add_card);
 		mBtnMyCard =(FloatingActionButton)findViewById(R.id.btn_my_card);
 		floatingMenu=(FloatingActionsMenu)findViewById(R.id.floatingmenu);
 	}
@@ -75,10 +76,10 @@ public class MainActivity extends Activity {
 				startActivity(new Intent(MainActivity.this, CardinfoActivity.class));
 			}
 		});
-		mBtnMyQRCode.setOnClickListener(new OnClickListener() {
+		mBtnAddCard.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this, CreateQRcodeActivity.class));
+				startActivity(new Intent(MainActivity.this, AddCardActivity.class));
 			}
 		});
 	}

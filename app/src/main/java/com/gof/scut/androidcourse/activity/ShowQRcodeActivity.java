@@ -2,7 +2,6 @@ package com.gof.scut.androidcourse.activity;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -13,14 +12,14 @@ import com.google.zxing.WriterException;
 /**
  * Created by Administrator on 2015/11/8.
  */
-public class CreateQRcodeActivity extends Activity {
+public class ShowQRcodeActivity extends Activity {
 
     ImageView mIvqrcode;
     boolean needIni;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createqrcode);
+        setContentView(R.layout.activity_showqrcode);
         mIvqrcode =(ImageView)findViewById(R.id.iv_qrcode);
         needIni=true;
     }

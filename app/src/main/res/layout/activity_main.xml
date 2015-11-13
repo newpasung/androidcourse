@@ -27,10 +27,10 @@
             app:fab_icon="@drawable/scan"
             />
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_my_qrcode"
+            android:id="@+id/btn_add_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_title="我的二维码"
+            app:fab_title="添加名片"
             app:fab_icon="@drawable/qrcode"
             />
         <com.getbase.floatingactionbutton.FloatingActionButton
