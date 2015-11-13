@@ -150,8 +150,8 @@ public class MainActivity extends Activity {
 		if(keyCode==KeyEvent.KEYCODE_BACK){
 			if (floatingMenu.isExpanded()){
 				floatingMenu.collapse();
-				return true;
 			}
+			return true;
 		}
 		return false;
 	}

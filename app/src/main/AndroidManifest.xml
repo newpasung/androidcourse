@@ -8,6 +8,11 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -16,20 +21,36 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
-            android:launchMode="singleTask" >
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.CaptureActivity" >
+        <activity
+            android:name=".activity.CaptureActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".activity.CheckResultActivity" />
-        <activity android:name=".activity.CardinfoActivity" />
-        <activity android:name=".activity.ShowQRcodeActivity" />
-        <activity android:name=".activity.AddCardActivity" >
+        <activity
+            android:name=".activity.CheckResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CardinfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ShowQRcodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AddCardActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
