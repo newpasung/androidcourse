@@ -1,22 +1,22 @@
 package com.gof.scut.androidcourse.fragment;
 
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.scut.gof.coordinator.R;
-import com.scut.gof.coordinator.main.activity.HomeActivity;
-import com.scut.gof.coordinator.main.activity.LoginActivity;
-import com.scut.gof.coordinator.main.fragment.BaseFragment;
-import com.scut.gof.coordinator.main.storage.XManager;
+import com.gof.scut.androidcourse.R;
+import com.gof.scut.androidcourse.activity.LoginActivity;
+import com.gof.scut.androidcourse.activity.MainActivity;
+import com.gof.scut.androidcourse.storage.XManager;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class NormalWelcomeFragment extends BaseFragment {
+public class NormalWelcomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class NormalWelcomeFragment extends BaseFragment {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(getActivity(), isLogined ? HomeActivity.class : LoginActivity.class);
+                Intent intent = new Intent(getActivity(), isLogined ? MainActivity.class : LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();
             }

@@ -1,6 +1,7 @@
 package com.gof.scut.androidcourse.fragment;
 
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.util.Log;
@@ -10,19 +11,19 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.gof.scut.androidcourse.LocalBrCast;
+import com.gof.scut.androidcourse.R;
+import com.gof.scut.androidcourse.XRotationAnimation;
+import com.gof.scut.androidcourse.net.HttpClient;
+import com.gof.scut.androidcourse.net.JsonResponseHandler;
+import com.gof.scut.androidcourse.net.RequestParamName;
 import com.loopj.android.http.RequestParams;
-import com.scut.gof.coordinator.R;
-import com.scut.gof.coordinator.main.animation.XRotationAnimation;
-import com.scut.gof.coordinator.main.communication.LocalBrCast;
-import com.scut.gof.coordinator.main.fragment.BaseFragment;
-import com.scut.gof.coordinator.main.net.HttpClient;
-import com.scut.gof.coordinator.main.net.JsonResponseHandler;
-import com.scut.gof.coordinator.main.net.RequestParamName;
 
 import org.json.JSONObject;
 
-public class RegisterFragment extends BaseFragment {
+public class RegisterFragment extends Fragment {
 
     private TextInputLayout phoneInputLayout;
     private TextInputLayout passwordInputLayout;
@@ -75,7 +76,7 @@ public class RegisterFragment extends BaseFragment {
                             XRotationAnimation animation = new XRotationAnimation();
                             animation.setRepeatMode(Animation.INFINITE);
                             registerBtn.startAnimation(animation);
-                            toast("注册成功");
+                            Toast.makeText(getActivity(), "注册成功", Toast.LENGTH_SHORT).show();
                             LocalBrCast.sendBroadcast(getActivity(), "show login fragment");
                         }
 
@@ -88,7 +89,7 @@ public class RegisterFragment extends BaseFragment {
                                 passwordInputLayout.setErrorEnabled(true);
                                 passwordInputLayout.setError(message);
                             } else {
-                                toast(message);
+                                Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
                             }
 
                             Log.i("login", message + "  " + for_param);

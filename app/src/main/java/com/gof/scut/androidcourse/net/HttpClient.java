@@ -2,10 +2,9 @@ package com.gof.scut.androidcourse.net;
 
 import android.content.Context;
 
+import com.gof.scut.androidcourse.storage.XManager;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
-import com.scut.gof.coordinator.main.storage.XManager;
-
 /**
  * Created by gjz on 11/2/15.
  */
@@ -22,6 +21,5 @@ public class HttpClient {
         params.put(RequestParamName.TOKEN, XManager.getToken(context));
         client.post(context, BASE_URL + url, params, handler);
     }
-
 
 }

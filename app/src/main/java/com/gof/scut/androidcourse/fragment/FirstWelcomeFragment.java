@@ -1,5 +1,6 @@
 package com.gof.scut.androidcourse.fragment;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,13 +13,12 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
-import com.scut.gof.coordinator.R;
-import com.scut.gof.coordinator.main.activity.HomeActivity;
-import com.scut.gof.coordinator.main.activity.LoginActivity;
-import com.scut.gof.coordinator.main.fragment.BaseFragment;
-import com.scut.gof.coordinator.main.storage.XManager;
+import com.gof.scut.androidcourse.R;
+import com.gof.scut.androidcourse.activity.LoginActivity;
+import com.gof.scut.androidcourse.activity.MainActivity;
+import com.gof.scut.androidcourse.storage.XManager;
 
-public class FirstWelcomeFragment extends BaseFragment implements View.OnTouchListener{
+public class FirstWelcomeFragment extends Fragment implements View.OnTouchListener{
 
     private ImageSwitcher imgSwitcher;
     //欢迎页的图片资源id
@@ -91,7 +91,7 @@ public class FirstWelcomeFragment extends BaseFragment implements View.OnTouchLi
                     else {
                         XManager.setOpenedStatus(getActivity(), true);//设置已经打开过app
                         boolean isLogined = XManager.isLogined(getActivity());//通过是否已登录决定进入的下一个activity
-                        Intent intent = new Intent(getActivity(), isLogined ? HomeActivity.class : LoginActivity.class);
+                        Intent intent = new Intent(getActivity(), isLogined ? MainActivity.class : LoginActivity.class);
                         startActivity(intent);
                         getActivity().finish();
                     }

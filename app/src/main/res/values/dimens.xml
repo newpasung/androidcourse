@@ -1,8 +1,9 @@
 <resources>
-
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="radius_small">2dp</dimen>
+    <dimen name="radius_normal">4dp</dimen>
 
     <dimen name="margin_normal">16dp</dimen>
     <dimen name="margin_small">8dp</dimen>
@@ -11,7 +12,7 @@
 
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_normal">16dp</dimen>
-    <dimen name="padding_medium">24dp</dimen>
+    <dimen name="padding_medium">10dp</dimen>
 
     <dimen name="textsize_l1">12sp</dimen>
     <dimen name="textsize_l2">14sp</dimen>
@@ -20,4 +21,35 @@
     <dimen name="textsize_l5">24sp</dimen>
     <dimen name="textsize_l6">34sp</dimen>
     <dimen name="textsize_l7">45sp</dimen>
+
+    <dimen name="evelation_l1">4dp</dimen>
+
+    <dimen name="dialog_width">260dp</dimen>
+
+
+    <dimen name="avatar_big">60dp</dimen>
+    <dimen name="avatar_normal">40dp</dimen>
+    <dimen name="avatar_large">80dp</dimen>
+
+    <dimen name="img_thumbnail">98dp</dimen>
+
+    <dimen name="cardheight_normal">120dp</dimen>
+    <dimen name="cardradius_normal">4dp</dimen>
+
+    <dimen name="paper_projectheight">80dp</dimen>
+
+    <dimen name="dialog_minHeight">128dp</dimen>
+
+    //from official
+    <dimen name="drawer_header_content_height">56dp</dimen>
+    <dimen name="dialog_flat_btn_height">36dp</dimen>
+
+    <dimen name="header_height">192dp</dimen>
+    <dimen name="header_height_small">150dp</dimen>
+    <dimen name="action_entry_height">48dp</dimen>
+
+    <dimen name="image_size">120dp</dimen>
+    <dimen name="space_size">2dp</dimen>
+    <dimen name="folder_cover_size">72dp</dimen>
+
 </resources>

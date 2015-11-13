@@ -12,7 +12,8 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.view.View;
 
-import com.scut.gof.coordinator.R;
+import com.gof.scut.androidcourse.R;
+
 
 /**用这个transaction可以给fragment加上很多动画，但是要配合fragcontainer使用*/
 

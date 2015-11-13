@@ -5,14 +5,14 @@ import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.scut.gof.coordinator.R;
-import com.scut.gof.coordinator.main.communication.LocalBrCast;
-import com.scut.gof.coordinator.main.fragment.FragmentTransactionExtended;
-import com.scut.gof.coordinator.main.fragment.LoginFragment.LoginFragment;
-import com.scut.gof.coordinator.main.fragment.LoginFragment.RegisterFragment;
+import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
+import com.gof.scut.androidcourse.LocalBrCast;
+import com.gof.scut.androidcourse.R;
+import com.gof.scut.androidcourse.fragment.FragmentTransactionExtended;
+import com.gof.scut.androidcourse.fragment.LoginFragment;
+import com.gof.scut.androidcourse.fragment.RegisterFragment;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -73,5 +73,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onDestroy();
         LocalBrCast.unregisterReceiver(this, showRegisterBroadcastReceiver);
         LocalBrCast.unregisterReceiver(this, showLoginBroadcastReceiver);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            if(getFragmentManager().getBackStackEntryCount()>0){
+                getFragmentManager().popBackStack();
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

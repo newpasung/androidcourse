@@ -16,9 +16,17 @@ import android.widget.TextView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.gof.scut.androidcourse.Card;
+import com.gof.scut.androidcourse.Card2;
 import com.gof.scut.androidcourse.MyApplication;
 import com.gof.scut.androidcourse.R;
+import com.gof.scut.androidcourse.net.HttpClient;
+import com.gof.scut.androidcourse.net.JsonResponseHandler;
+import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity {
@@ -30,6 +38,7 @@ public class MainActivity extends Activity {
 	FloatingActionButton mBtnAddCard;
 	FloatingActionButton mBtnMyCard;
 	List<Card> cardList;
+	List<Card2> newCardList;
 	MyAdapter adapter ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,7 @@ public class MainActivity extends Activity {
 	protected void iniAdapter(){
 		adapter = new MyAdapter();
 		adapter.setCards(cardList);
+		//TODO
 		recyclerView.setAdapter(adapter);
 		recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 	}
@@ -69,30 +79,43 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-		mBtnMyCard.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this, CardinfoActivity.class));
-			}
-		});
 		mBtnAddCard.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(MainActivity.this, AddCardActivity.class));
 			}
 		});
+		mBtnMyCard.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(MainActivity.this, CardinfoActivity.class));
+			}
+		});
+
+		recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+			@Override
+			public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+				if(floatingMenu.isExpanded()){
+					floatingMenu.collapse();
+				}
+			}
+		});
 	}
 
 	class MyAdapter extends RecyclerView.Adapter {
 		List<Card> cards;
+		List<Card2> card2s;
 
 		public void setCards(List<Card> cards) {
 			this.cards = cards;
 		}
 
+		public void setCard2s(List<Card2> card2s) {
+			this.card2s = card2s;
+		}
+
 		@Override
 		public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-			//TODO definelistitem
 			View v=LayoutInflater.from(parent.getContext()).inflate(
 					R.layout.listitem,parent,false
 			);
@@ -141,7 +164,6 @@ public class MainActivity extends Activity {
 				mTvphone=(TextView)itemView.findViewById(R.id.tv_phone);
 			}
 		}
-
 	}
 
 	@Override
@@ -149,9 +171,35 @@ public class MainActivity extends Activity {
 		if(keyCode==KeyEvent.KEYCODE_BACK){
 			if (floatingMenu.isExpanded()){
 				floatingMenu.collapse();
+				return true;
 			}
-			return true;
 		}
-		return false;
+		return super.onKeyDown(keyCode,event);
 	}
+
+	private void getNetData(){
+		RequestParams params =new RequestParams();
+		HttpClient.get(this, "", params, new JsonResponseHandler() {
+			@Override
+			public void onSuccess(JSONObject response) {
+				try {
+					JSONObject data =response.getJSONObject("data");
+					List<Card2> newdata =Card2.insertOrupdate(data);
+					if(newdata.size()>0){
+						adapter.setCard2s(newdata);
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+
+			}
+
+			@Override
+			public void onFailure(String message, String for_param) {
+
+			}
+		});
+	}
+
+
 }

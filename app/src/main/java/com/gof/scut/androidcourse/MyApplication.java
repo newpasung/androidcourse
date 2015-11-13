@@ -3,6 +3,8 @@ package com.gof.scut.androidcourse;
 import android.app.Application;
 import android.util.ArrayMap;
 
+import com.activeandroid.ActiveAndroid;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +19,14 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        ActiveAndroid.initialize(this);
         iniData();
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        ActiveAndroid.dispose();
     }
 
     private void iniData(){

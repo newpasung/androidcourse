@@ -133,7 +133,10 @@ public class CaptureActivity extends Activity implements Callback {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if(keyCode==KeyEvent.KEYCODE_BACK){
-			startActivity(new Intent(this, MainActivity.class));
+			Intent intent =new Intent();
+			intent.setClass(this,MainActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
 			return true;
 		}
 		return false;

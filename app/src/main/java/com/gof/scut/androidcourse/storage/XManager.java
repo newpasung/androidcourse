@@ -22,7 +22,6 @@ public class XManager {
     //一些用户相关的参数
     public static String PARAM_TOKEN = "token";//用户token
     public static String PARAM_UID = "uid";//用户uid
-    public static String PARAM_PROJECT_IDS="projectids";//用户相关的所有项目id
 
     public static synchronized SharedPreferences getSystemManager(Context context){
         if(sysPref==null){
@@ -96,34 +95,5 @@ public class XManager {
         SharedPreferences.Editor editor =getUserManager(context).edit();
         editor.putInt(PARAM_UID, uid);
         editor.apply();
-    }
-
-    /**把id保存为String，字符分隔符为;
-     * 如：123;123;123;
-     * */
-    public static void saveUsersProjectId(Context context,long ... params){
-        StringBuilder builder=new StringBuilder();
-        for (int i=0;i<params.length;i++){
-            builder.append(params[i]);
-            builder.append(";");
-        }
-        SharedPreferences.Editor editor=getUserManager(context).edit();
-        editor.putString(PARAM_PROJECT_IDS, builder.toString());
-        editor.apply();
-    }
-
-    public static long[] getUsersProjectId(Context context){
-        String ids_str=getUserManager(context).getString(PARAM_PROJECT_IDS,"");
-        String []ids_arr=ids_str.split(";");
-        if(ids_arr==null){
-            return null;
-        }
-        else{
-            long ids[] =new long[ids_str.length()];
-            for (int i=0;i<ids_str.length();i++){
-                ids[i]= Long.valueOf(ids_arr[i]);
-            }
-            return ids;
-        }
     }
 }

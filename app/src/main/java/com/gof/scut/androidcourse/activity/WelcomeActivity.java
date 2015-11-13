@@ -2,12 +2,15 @@ package com.gof.scut.androidcourse.activity;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import com.scut.gof.coordinator.R;
-import com.scut.gof.coordinator.main.fragment.WelcomeFragment.FirstWelcomeFragment;
-import com.scut.gof.coordinator.main.fragment.WelcomeFragment.NormalWelcomeFragment;
-import com.scut.gof.coordinator.main.storage.XManager;
+import android.support.v7.app.AppCompatActivity;
 
-public class WelcomeActivity extends BaseActivity{
+import com.gof.scut.androidcourse.R;
+import com.gof.scut.androidcourse.fragment.FirstWelcomeFragment;
+import com.gof.scut.androidcourse.fragment.NormalWelcomeFragment;
+import com.gof.scut.androidcourse.storage.XManager;
+
+
+public class WelcomeActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

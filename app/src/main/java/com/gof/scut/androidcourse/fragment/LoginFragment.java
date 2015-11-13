@@ -1,6 +1,7 @@
 package com.gof.scut.androidcourse.fragment;
 
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -11,22 +12,22 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.gof.scut.androidcourse.LocalBrCast;
+import com.gof.scut.androidcourse.R;
+import com.gof.scut.androidcourse.XRotationAnimation;
+import com.gof.scut.androidcourse.activity.MainActivity;
+import com.gof.scut.androidcourse.net.HttpClient;
+import com.gof.scut.androidcourse.net.JsonResponseHandler;
+import com.gof.scut.androidcourse.net.RequestParamName;
+import com.gof.scut.androidcourse.storage.XManager;
 import com.loopj.android.http.RequestParams;
-import com.scut.gof.coordinator.R;
-import com.scut.gof.coordinator.main.activity.HomeActivity;
-import com.scut.gof.coordinator.main.animation.XRotationAnimation;
-import com.scut.gof.coordinator.main.communication.LocalBrCast;
-import com.scut.gof.coordinator.main.fragment.BaseFragment;
-import com.scut.gof.coordinator.main.net.HttpClient;
-import com.scut.gof.coordinator.main.net.JsonResponseHandler;
-import com.scut.gof.coordinator.main.net.RequestParamName;
-import com.scut.gof.coordinator.main.storage.XManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginFragment extends BaseFragment {
+public class LoginFragment extends Fragment {
 
     private TextInputLayout phoneInputLayout;
     private TextInputLayout passwordInputLayout;
@@ -66,32 +67,6 @@ public class LoginFragment extends BaseFragment {
                     RequestParams params = new RequestParams();
                     params.put(RequestParamName.PHONE, phone);
                     params.put(RequestParamName.PASSWORD, password);
-                    XRotationAnimation animation = new XRotationAnimation();
-                    animation.setRepeatMode(Animation.RESTART);
-                    animation.setRepeatCount(Animation.INFINITE);
-                    animation.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if(shouldTrans){
-                                startActivity(new Intent(getActivity(), HomeActivity.class));
-                                getActivity().finish();
-                            }
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                            if(shouldTrans){
-                                startActivity(new Intent(getActivity(), HomeActivity.class));
-                                getActivity().finish();
-                            }
-                        }
-                    });
-                    loginBtn.startAnimation(animation);
                     HttpClient.post(getActivity(), "user/login", params, new JsonResponseHandler() {
                         @Override
                         public void onSuccess(JSONObject response) {
@@ -99,7 +74,8 @@ public class LoginFragment extends BaseFragment {
                                 XManager.setLoginStatus(getActivity(), true);
                                 XManager.setToken(getActivity(), response.getJSONObject("data").getJSONObject("user").getString("token"));
                                 XManager.setUid(getActivity(), response.getJSONObject("data").getJSONObject("user").getInt("uid"));
-                                shouldTrans=true;
+                                startActivity(new Intent(getActivity(), MainActivity.class));
+                                getActivity().finish();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -114,10 +90,10 @@ public class LoginFragment extends BaseFragment {
                                 passwordInputLayout.setErrorEnabled(true);
                                 passwordInputLayout.setError(message);
                             } else {
-                                toast(message);
+                                if(message!=null){
+                                    Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+                                }
                             }
-
-                            Log.i("login", message + "  " + for_param);
                         }
 
                     });

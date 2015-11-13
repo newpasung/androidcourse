@@ -1,20 +1,14 @@
-<com.scut.gof.coordinator.main.widget.FragContainer
+<com.gof.scut.androidcourse.FragContainer
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/background_register"
     tools:context="com.scut.gof.coordinator.main.fragment.LoginFragment.RegisterFragment">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="@dimen/avatar_large"
-            android:layout_height="@dimen/avatar_large"
-            android:layout_gravity="center_horizontal"
-            android:src="@mipmap/ic_launcher"/>
-
         <android.support.design.widget.TextInputLayout
             android:id="@+id/phone"
             android:layout_width="match_parent"
@@ -43,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/register"
-            android:background="@color/colorPrimary"/>
+            />
     </LinearLayout>
 
-</com.scut.gof.coordinator.main.widget.FragContainer>
+</com.gof.scut.androidcourse.FragContainer>

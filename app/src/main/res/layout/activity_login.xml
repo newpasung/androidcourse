@@ -9,7 +9,7 @@
         android:id="@+id/login_content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:name="com.scut.gof.coordinator.main.fragment.LoginFragment.LoginFragment"
+        android:name="com.gof.scut.androidcourse.fragment.LoginFragment"
         tools:layout="@layout/fragment_login">
     </fragment>
 

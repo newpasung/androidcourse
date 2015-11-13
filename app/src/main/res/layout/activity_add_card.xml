@@ -6,7 +6,50 @@
     tools:context="com.gof.scut.androidcourse.activity.AddCardActivity">
 
     <TextView
+        android:id="@+id/tv_name"
+        style="@style/mytextstyle"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/text_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="添加名片界面"/>
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_alignTop="@+id/tv_name"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="24dp"
+        android:layout_toRightOf="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        style="@style/mytextstyle"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginLeft="16dp"
+        android:text="@string/text_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_alignTop="@+id/tv_phone"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="24dp"
+        android:layout_toRightOf="@+id/tv_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_commit"
+        android:text="@string/text_ensure"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>

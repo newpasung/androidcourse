@@ -41,5 +41,7 @@
   <color name="black">#000</color>
   <color name="green">#259b24</color>
   <color name="light_green">#d0f8ce</color>
-      
+  <color name="background_color">#03a9f4</color>
+  <color name="background_register">#e91e63</color>
+
 </resources>

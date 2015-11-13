@@ -1,9 +1,21 @@
 package com.gof.scut.androidcourse;
 
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+
 /**
  * Created by Administrator on 2015/11/8.
  */
-public class Card {
+@Table(name = "card")
+public class Card extends Model{
+
+    @Column (name ="carid")
+    public long cardid;
+    @Column (name ="islocalcard")
+    public boolean islocalcard;
+    @Column (name ="userid")
+    public long userid;
 
     private String avatarurl;
     private String name;
