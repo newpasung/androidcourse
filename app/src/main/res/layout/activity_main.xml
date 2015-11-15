@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_title="添加名片"
-            app:fab_icon="@drawable/qrcode"
+            app:fab_icon="@drawable/cards"
             />
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_my_card"

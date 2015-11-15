@@ -20,6 +20,7 @@
         android:textColor="@color/green"
         android:singleLine="true"
         android:background="@null"
+        android:drawableLeft="@drawable/barcode_2d"
         android:layout_alignParentRight="true"
         android:layout_above="@+id/tv_name"/>
 
