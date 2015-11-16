@@ -11,6 +11,7 @@
     <string name="test_sentence_100">注意这是一个有二十个中文字用于测试的句子注意这是一个有二十个中文字用于测试的句子注意这是一个有二十个中文字用于测试的句子注意这是一个有二十个中文字用于测试的句子注意这是一个有二十个中文字用于测试的句子</string>
     <string name="test_type">it\'s a type tip</string>
     <string name="test">测试</string>
+    <string name="username">用户名</string>
     <string name="text_name">名字</string>
     <string name="text_phone">手机</string>
     <string name="text_phonenumber">手机号码</string>

@@ -5,18 +5,15 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.gof.scut.androidcourse.LocalBrCast;
 import com.gof.scut.androidcourse.R;
-import com.gof.scut.androidcourse.XRotationAnimation;
 import com.gof.scut.androidcourse.activity.MainActivity;
 import com.gof.scut.androidcourse.net.HttpClient;
 import com.gof.scut.androidcourse.net.JsonResponseHandler;
@@ -29,7 +26,7 @@ import org.json.JSONObject;
 
 public class LoginFragment extends Fragment {
 
-    private TextInputLayout phoneInputLayout;
+    private TextInputLayout usernameInputLayout;
     private TextInputLayout passwordInputLayout;
     private Button loginBtn;
     private Button registerBtn;
@@ -49,23 +46,23 @@ public class LoginFragment extends Fragment {
     }
 
     private void initListener() {
-        final EditText phoneEditText = phoneInputLayout.getEditText();
+        final EditText usernameEditText = usernameInputLayout.getEditText();
         final EditText passwordEditText = passwordInputLayout.getEditText();
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String phone = phoneEditText.getText().toString();
+                String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-                if (phone.length() != 11) {
-                    phoneInputLayout.setErrorEnabled(true);
-                    phoneInputLayout.setError("请输入11位手机号码");
+                if (username.length() == 0) {
+                    usernameInputLayout.setErrorEnabled(true);
+                    usernameInputLayout.setError("请输入用户名");
                 } else if (password.length() == 0) {
                     passwordInputLayout.setErrorEnabled(true);
                     passwordInputLayout.setError("请输入密码");
                 } else {
                     RequestParams params = new RequestParams();
-                    params.put(RequestParamName.PHONE, phone);
+                    params.put(RequestParamName.USERNAME, username);
                     params.put(RequestParamName.PASSWORD, password);
                     HttpClient.post(getActivity(), "user/login", params, new JsonResponseHandler() {
                         @Override
@@ -83,9 +80,9 @@ public class LoginFragment extends Fragment {
 
                         @Override
                         public void onFailure(String message, String for_param) {
-                            if (for_param.equals(RequestParamName.PHONE)) {
-                                phoneInputLayout.setErrorEnabled(true);
-                                phoneInputLayout.setError(message);
+                            if (for_param.equals(RequestParamName.USERNAME)) {
+                                usernameInputLayout.setErrorEnabled(true);
+                                usernameInputLayout.setError(message);
                             } else if (for_param.equals(RequestParamName.PASSWORD)) {
                                 passwordInputLayout.setErrorEnabled(true);
                                 passwordInputLayout.setError(message);
@@ -111,7 +108,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void initUI(View view) {
-        phoneInputLayout = (TextInputLayout) view.findViewById(R.id.phone);
+        usernameInputLayout = (TextInputLayout) view.findViewById(R.id.username);
 
         passwordInputLayout = (TextInputLayout) view.findViewById(R.id.password);
 
