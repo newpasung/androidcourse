@@ -8,8 +8,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/floatingmenu"
@@ -19,27 +18,27 @@
         app:fab_labelStyle="@style/fab_label_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_title="扫描二维码"
-            app:fab_icon="@drawable/scan"
-            />
+            app:fab_icon="@drawable/scan" />
+
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_add_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_title="添加名片"
-            app:fab_icon="@drawable/cards"
-            />
+            app:fab_icon="@drawable/cards" />
+
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_my_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_title="我的名片"
-            app:fab_icon="@drawable/card"
-            />
+            app:fab_icon="@drawable/card" />
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </RelativeLayout>

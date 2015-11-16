@@ -1,7 +1,7 @@
 package com.gof.scut.androidcourse;
 
 import android.content.Context;
-import android.util.Log;
+import android.graphics.Color;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Model;
@@ -23,31 +23,36 @@ import java.util.List;
 @Table(name = "card2")
 public class Card2 extends Model {
 
-    @Column(name ="carid")
+    @Column(name = "carid")
     public long cardid;
-    @Column (name ="islocalcard")
-    public boolean islocalcard;
-    @Column (name ="userid")
+    @Column(name = "islocalcard")
+    public int islocalcard;
+    @Column(name = "userid")
     public long userid;
     @Column(name = "name")
     public String name;
     @Column(name = "phonenumber")
     public String phonenumber;
+    @Column(name = "company")
+    private String company;
 
-    public static Card2 insertOrUpdate(JSONObject data){
-        Card2 card =null;
-        long cardid =0;
-        if(data.has("cardid")){
+    public static Card2 insertOrUpdate(JSONObject data) {
+        Card2 card = null;
+        long cardid = 0;
+        if (data.has("cardid")) {
             try {
-                cardid=data.getLong("cardid");
-                if(getCard(cardid)==null){
-                    card =new Card2();
-                    card.cardid =cardid;
-                }else{
-                    card =getCard(cardid);
+                cardid = data.getLong("cardid");
+                if (getCard(cardid) == null) {
+                    card = new Card2();
+                    card.cardid = cardid;
+                } else {
+                    card = getCard(cardid);
                 }
-                card.userid =data.getLong("userid");
-                card.islocalcard=data.getBoolean("islocalcard");
+                card.userid = data.getLong("uid");
+                card.islocalcard = data.getInt("islocalcard");
+                card.company = data.getString("company");
+                card.name = data.getString("name");
+                card.phonenumber = data.getString("phone");
                 card.save();
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -56,44 +61,73 @@ public class Card2 extends Model {
         return card;
     }
 
-    public static List<Card2> insertOrupdate(JSONObject data){
-        List<Card2> card2s =new ArrayList<>();
-        Card2 temp ;
+    public static List<Card2> insertOrupdate(JSONArray dataArray) {
+        List<Card2> card2s = new ArrayList<>();
+        Card2 temp;
         ActiveAndroid.beginTransaction();
         try {
-            JSONArray dataArray =data.getJSONArray("card2");
-            for (int i=0;i<dataArray.length();i++){
-                temp =Card2.insertOrUpdate(dataArray.getJSONObject(i));
-                if(temp!=null){
+            for (int i = 0; i < dataArray.length(); i++) {
+                temp = Card2.insertOrUpdate(dataArray.getJSONObject(i));
+                if (temp != null) {
                     card2s.add(temp);
                 }
             }
             ActiveAndroid.setTransactionSuccessful();
         } catch (JSONException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             ActiveAndroid.endTransaction();
         }
         return card2s;
     }
 
-    public static Card2 getCard(long cardid){
-        return new Select().from(Card2.class).where("carid="+cardid).executeSingle();
+    public static Card2 getCard(long cardid) {
+        return new Select().from(Card2.class).where("carid=" + cardid).executeSingle();
     }
 
-    public static Card2 createLocalCard(String name ,String phonenumber){
-        Card2 card =new Card2();
-        card.name=name;
-        card.phonenumber =phonenumber;
-        return card;
+    public int getBackgroundColor() {
+        return Color.WHITE;
     }
 
-    public void commitLocal(Context context){
-        this.islocalcard=true;
-        this.userid = XManager.getUid(context);
-        this.save();
-        Log.i("sqlmax",new Select("max(cardid)").toSql());
+    public String getCompany() {
+        return this.company == null ? "" : this.company;
+    }
+
+    public String getName() {
+        return this.name == null ? "" : this.name;
+    }
+
+    public String getPhonenumber() {
+        return this.phonenumber == null ? "" : this.phonenumber;
+    }
+
+    public long getCardid() {
+        return cardid;
+    }
+
+    public int getTextColor() {
+        return Color.BLACK;
+    }
+
+    public long getUserid() {
+        return userid;
+    }
+
+    public int getIslocalcard() {
+        return islocalcard;
+    }
+
+    public static Card2 getMyCard(Context context) {
+        long uid = XManager.getUid(context);
+        return new Select().from(Card2.class).where("userid=" + uid).executeSingle();
+    }
+
+    public static long getMyCardid(Context context) {
+        return getMyCard(context).getCardid();
+    }
+
+    public static void deleteCard(long cardid) {
+        getCard(cardid).delete();
     }
 
 }

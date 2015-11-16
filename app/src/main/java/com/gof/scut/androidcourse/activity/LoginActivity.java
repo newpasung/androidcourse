@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+
 import com.gof.scut.androidcourse.LocalBrCast;
 import com.gof.scut.androidcourse.R;
 import com.gof.scut.androidcourse.fragment.FragmentTransactionExtended;
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         showRegisterBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (registerFragment == null){
+                if (registerFragment == null) {
                     registerFragment = new RegisterFragment();
                 }
                 replaceFragment(registerFragment);
@@ -49,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         showLoginBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (loginFragment == null){
+                if (loginFragment == null) {
                     loginFragment = new LoginFragment();
                 }
                 replaceFragment(loginFragment);
@@ -77,8 +78,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode==KeyEvent.KEYCODE_BACK){
-            if(getFragmentManager().getBackStackEntryCount()>0){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (getFragmentManager().getBackStackEntryCount() > 0) {
                 getFragmentManager().popBackStack();
                 return true;
             }

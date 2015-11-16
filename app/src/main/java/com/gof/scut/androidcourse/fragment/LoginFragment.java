@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.gof.scut.androidcourse.Card2;
 import com.gof.scut.androidcourse.LocalBrCast;
 import com.gof.scut.androidcourse.R;
 import com.gof.scut.androidcourse.activity.MainActivity;
@@ -51,7 +52,8 @@ public class LoginFragment extends Fragment {
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
+                v.setEnabled(false);
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
                 if (username.length() == 0) {
@@ -68,6 +70,10 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void onSuccess(JSONObject response) {
                             try {
+                                JSONObject data = response.getJSONObject("data");
+                                JSONObject userdata = data.getJSONObject("user");
+                                JSONObject carddata = userdata.getJSONObject("card");
+                                Card2.insertOrUpdate(carddata);
                                 XManager.setLoginStatus(getActivity(), true);
                                 XManager.setToken(getActivity(), response.getJSONObject("data").getJSONObject("user").getString("token"));
                                 XManager.setUid(getActivity(), response.getJSONObject("data").getJSONObject("user").getInt("uid"));
@@ -87,10 +93,11 @@ public class LoginFragment extends Fragment {
                                 passwordInputLayout.setErrorEnabled(true);
                                 passwordInputLayout.setError(message);
                             } else {
-                                if(message!=null){
-                                    Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
+                                if (message != null) {
+                                    Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
                                 }
                             }
+                            v.setEnabled(true);
                         }
 
                     });

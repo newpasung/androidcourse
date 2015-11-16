@@ -10,7 +10,7 @@
         android:layout_width="80dp"
         android:layout_margin="24dp"
         android:layout_height="80dp"
-        android:src="@drawable/user_avatar"/>
+        android:src="@drawable/user_avatar" />
 
     <Button
         android:id="@+id/btn_show_qrcode"
@@ -22,7 +22,7 @@
         android:background="@null"
         android:drawableLeft="@drawable/barcode_2d"
         android:layout_alignParentRight="true"
-        android:layout_above="@+id/tv_name"/>
+        android:layout_above="@+id/tv_name" />
 
     <TextView
         android:id="@+id/tv_name"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="姓名：小明"
-        android:layout_below="@+id/iv_avatar"/>
+        android:layout_below="@+id/iv_avatar" />
 
     <TextView
         android:id="@+id/tv_company"
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="单位：华南理工大学 校长"
-        android:layout_below="@+id/tv_name"/>
+        android:layout_below="@+id/tv_name" />
 
     <TextView
         android:id="@+id/tv_phone"
@@ -46,6 +46,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="电话号码：10086"
-        android:layout_below="@+id/tv_company"/>
+        android:layout_below="@+id/tv_company" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:textSize="24sp"
+        android:layout_alignParentBottom="true"
+        android:background="#FF0000"
+        android:text="@string/text_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

@@ -14,6 +14,8 @@
     <string name="username">用户名</string>
     <string name="text_name">名字</string>
     <string name="text_phone">手机</string>
+    <string name="text_company">公司</string>
+    <string name="text_delete">删除</string>
     <string name="text_phonenumber">手机号码</string>
     <string name="text_password">密码</string>
     <string name="login">登录</string>
@@ -22,7 +24,7 @@
     <string name="text_feedback_tips">你可以写下建议或意见，并留下联系方式，我们会做出及时的回复。</string>
     <string name="text_ensure">确定</string>
     <string name="text_cancel">取消</string>
-
+    <string name="text_addcard">添加名片</string>
     //third library
     <string name="folder_all">All Images</string>
     <string name="preview">Preview</string>

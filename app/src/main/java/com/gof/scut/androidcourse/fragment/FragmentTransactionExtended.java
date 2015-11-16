@@ -15,7 +15,9 @@ import android.view.View;
 import com.gof.scut.androidcourse.R;
 
 
-/**用这个transaction可以给fragment加上很多动画，但是要配合fragcontainer使用*/
+/**
+ * 用这个transaction可以给fragment加上很多动画，但是要配合fragcontainer使用
+ */
 
 public class FragmentTransactionExtended implements FragmentManager.OnBackStackChangedListener {
     private boolean mDidSlideOut = false;
@@ -48,6 +50,7 @@ public class FragmentTransactionExtended implements FragmentManager.OnBackStackC
     public static final int ZOOM_FROM_RIGHT_CORNER = 20;
     public static final int ZOOM_SLIDE_HORIZONTAL = 21;
     public static final int ZOOM_SLIDE_VERTICAL = 22;
+
     public FragmentTransactionExtended(Context context, FragmentTransaction fragmentTransaction, Fragment firstFragment, Fragment secondFragment, int containerID) {
         this.mFragmentTransaction = fragmentTransaction;
         this.mContext = context;
@@ -116,16 +119,16 @@ public class FragmentTransactionExtended implements FragmentManager.OnBackStackC
                 transitionTableVertical();
                 break;
             case ZOOM_FROM_LEFT_CORNER:
-            	transitionZoomFromLeftCorner();
+                transitionZoomFromLeftCorner();
                 break;
             case ZOOM_FROM_RIGHT_CORNER:
-            	transitionZoomFromRightCorner();
+                transitionZoomFromRightCorner();
                 break;
             case ZOOM_SLIDE_HORIZONTAL:
-            	transitionZoomSlideHorizontal();
+                transitionZoomSlideHorizontal();
                 break;
             case ZOOM_SLIDE_VERTICAL:
-            	transitionZoomSlideVertical();
+                transitionZoomSlideVertical();
                 break;
         }
         mFragmentTransaction.replace(mContainerID, mSecondFragment);
@@ -166,6 +169,7 @@ public class FragmentTransactionExtended implements FragmentManager.OnBackStackC
     private void transitionGlide() {
         mFragmentTransaction.setCustomAnimations(R.animator.glide_fragment_horizontal_in, R.animator.glide_fragment_horizontal_out, R.animator.glide_fragment_horizontal_in, R.animator.glide_fragment_horizontal_out);
     }
+
     private void transitionStack() {
         mFragmentTransaction.setCustomAnimations(R.animator.stack_right_in, R.animator.stack_left_out, R.animator.stack_left_in, R.animator.stack_right_out);
     }
@@ -201,19 +205,19 @@ public class FragmentTransactionExtended implements FragmentManager.OnBackStackC
     private void transitionFlipVertical() {
         mFragmentTransaction.setCustomAnimations(R.animator.card_flip_vertical_right_in, R.animator.card_flip_vertical_left_out, R.animator.card_flip_vertical_left_in, R.animator.card_flip_vertical_right_out);
     }
-    
+
     private void transitionZoomFromLeftCorner() {
         mFragmentTransaction.setCustomAnimations(R.animator.zoom_from_left_corner_right_in, R.animator.zoom_from_left_corner_left_out, R.animator.zoom_from_left_corner_left_in, R.animator.zoom_from_left_corner_right_out);
     }
-    
+
     private void transitionZoomFromRightCorner() {
         mFragmentTransaction.setCustomAnimations(R.animator.zoom_from_right_corner_right_in, R.animator.zoom_from_right_corner_left_out, R.animator.zoom_from_right_corner_left_in, R.animator.zoom_from_right_corner_right_out);
     }
-    
+
     private void transitionZoomSlideHorizontal() {
         mFragmentTransaction.setCustomAnimations(R.animator.zoom_slide_horizontal_tablet_right_in, R.animator.zoom_slide_horizontal_left_out, R.animator.zoom_slide_horizontal_tablet_left_in, R.animator.zoom_slide_horizontal_right_out);
     }
-    
+
     private void transitionZoomSlideVertical() {
         mFragmentTransaction.setCustomAnimations(R.animator.zoom_slide_vertical_tablet_right_in, R.animator.zoom_slide_vertical_left_out, R.animator.zoom_slide_vertical_tablet_left_in, R.animator.zoom_slide_vertical_right_out);
     }
@@ -236,7 +240,7 @@ public class FragmentTransactionExtended implements FragmentManager.OnBackStackC
                 public void onAnimationEnd(Animator arg0) {
                     mFragmentTransaction.setCustomAnimations(R.animator.slide_fragment_in, 0, 0, R.animator.slide_fragment_out);
                     mFragmentTransaction.add(mContainerID, mSecondFragment);
-                    if(shouldAddtoBack){
+                    if (shouldAddtoBack) {
                         mFragmentTransaction.addToBackStack(null);
                     }
                     mFragmentTransaction.commit();
@@ -248,7 +252,7 @@ public class FragmentTransactionExtended implements FragmentManager.OnBackStackC
 
     public void slideBack(Animator.AnimatorListener listener) {
         View movingFragmentView = mFirstFragment.getView();
-        movingFragmentView.setPivotY(movingFragmentView.getHeight()/2);
+        movingFragmentView.setPivotY(movingFragmentView.getHeight() / 2);
         movingFragmentView.setPivotX(movingFragmentView.getWidth() / 2);
 
         PropertyValuesHolder rotateX = PropertyValuesHolder.ofFloat("rotationX", 40f);
@@ -292,13 +296,13 @@ public class FragmentTransactionExtended implements FragmentManager.OnBackStackC
     }
 
 
-    public void commit(boolean shouldAddtoBack){
-        switch (mTransitionType){
+    public void commit(boolean shouldAddtoBack) {
+        switch (mTransitionType) {
             case SLIDING:
                 switchFragments(shouldAddtoBack);
                 break;
             default:
-                if(shouldAddtoBack){
+                if (shouldAddtoBack) {
                     mFragmentTransaction.addToBackStack(null);
                 }
                 mFragmentTransaction.commit();
@@ -308,12 +312,12 @@ public class FragmentTransactionExtended implements FragmentManager.OnBackStackC
 
     @Override
     public void onBackStackChanged() {
-        switch (mTransitionType){
+        switch (mTransitionType) {
             case SLIDING:
                 if (!mDidSlideOut) {
-                        slideForward();
-                }else{
-                    mDidSlideOut= false;
+                    slideForward();
+                } else {
+                    mDidSlideOut = false;
                 }
                 break;
         }

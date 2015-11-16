@@ -18,5 +18,4 @@
     android:valueTo="0.30"
     android:propertyName="yFraction"
     android:valueType="floatType"
-    android:duration="@integer/slide_up_down_duration">
-</objectAnimator>
+    android:duration="@integer/slide_up_down_duration"></objectAnimator>

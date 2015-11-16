@@ -10,7 +10,7 @@ import com.gof.scut.androidcourse.fragment.NormalWelcomeFragment;
 import com.gof.scut.androidcourse.storage.XManager;
 
 
-public class WelcomeActivity extends AppCompatActivity{
+public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +21,9 @@ public class WelcomeActivity extends AppCompatActivity{
 
     private void initUI() {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        if(XManager.hasOpened(WelcomeActivity.this)){
+        if (XManager.hasOpened(WelcomeActivity.this)) {
             transaction.replace(R.id.welcome_content, new NormalWelcomeFragment());
-        }else {
+        } else {
             transaction.replace(R.id.welcome_content, new FirstWelcomeFragment());
         }
         transaction.commit();

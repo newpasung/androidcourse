@@ -11,17 +11,16 @@ import cz.msebera.android.httpclient.Header;
 /**
  * Created by gjz on 11/2/15.
  */
-public abstract class JsonResponseHandler extends JsonHttpResponseHandler{
+public abstract class JsonResponseHandler extends JsonHttpResponseHandler {
     @Override
     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
         try {
             int status = response.getInt("status");
             if (status == 1) {
                 onSuccess(response);
-            }else{
+            } else {
                 String message = response.getString("message");
-                String for_param = response.getString("for_param");
-                onFailure(message, for_param);
+                onFailure(message, "");
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -62,5 +61,6 @@ public abstract class JsonResponseHandler extends JsonHttpResponseHandler{
     }
 
     public abstract void onSuccess(JSONObject response);
+
     public abstract void onFailure(String message, String for_param);
 }

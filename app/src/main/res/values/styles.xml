@@ -16,6 +16,7 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:windowNoTitle">true</item>
     </style>
+
     <style name="menu_labels_style">
         <item name="android:textColor">#DE000000</item>
         <item name="android:shadowRadius">5</item>

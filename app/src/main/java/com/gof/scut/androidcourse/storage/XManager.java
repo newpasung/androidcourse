@@ -23,77 +23,81 @@ public class XManager {
     public static String PARAM_TOKEN = "token";//用户token
     public static String PARAM_UID = "uid";//用户uid
 
-    public static synchronized SharedPreferences getSystemManager(Context context){
-        if(sysPref==null){
-            sysPref=context.getSharedPreferences(FILENAME_SYSTEM, Context.MODE_PRIVATE);
+    public static synchronized SharedPreferences getSystemManager(Context context) {
+        if (sysPref == null) {
+            sysPref = context.getSharedPreferences(FILENAME_SYSTEM, Context.MODE_PRIVATE);
         }
         return sysPref;
     }
 
-    public static synchronized SharedPreferences getUserManager(Context context){
-        if(userPref==null){
-            userPref=context.getSharedPreferences(FILENAME_USER,Context.MODE_PRIVATE);
+    public static synchronized SharedPreferences getUserManager(Context context) {
+        if (userPref == null) {
+            userPref = context.getSharedPreferences(FILENAME_USER, Context.MODE_PRIVATE);
         }
         return userPref;
     }
 
     //获取是否已登录
-    public static boolean isLogined(Context context){
-        return getSystemManager(context).getBoolean(PARAM_LOGINED,false);
+    public static boolean isLogined(Context context) {
+        return getSystemManager(context).getBoolean(PARAM_LOGINED, false);
     }
 
     /**
-    *设置是否已登录
-    *@param status  登录状态是或否
-    */
-    public static void setLoginStatus(Context context, boolean status){
-        SharedPreferences.Editor editor =getSystemManager(context).edit();
-        editor.putBoolean(PARAM_LOGINED,status);
+     * 设置是否已登录
+     *
+     * @param status 登录状态是或否
+     */
+    public static void setLoginStatus(Context context, boolean status) {
+        SharedPreferences.Editor editor = getSystemManager(context).edit();
+        editor.putBoolean(PARAM_LOGINED, status);
         editor.apply();
     }
 
     //获取是否已打开过app
-    public static boolean hasOpened(Context context){
-        return getSystemManager(context).getBoolean(PARAM_OPENED,false);
+    public static boolean hasOpened(Context context) {
+        return getSystemManager(context).getBoolean(PARAM_OPENED, false);
     }
 
     /**
      * 设置是否已经打开过app
-     * @param status  是否打开
+     *
+     * @param status 是否打开
      */
-    public static void setOpenedStatus(Context context, boolean status){
-        SharedPreferences.Editor editor =getSystemManager(context).edit();
+    public static void setOpenedStatus(Context context, boolean status) {
+        SharedPreferences.Editor editor = getSystemManager(context).edit();
         editor.putBoolean(PARAM_OPENED, status);
         editor.apply();
     }
 
     //获取用户token，如果没有则返回空字符串
-    public static String getToken(Context context){
+    public static String getToken(Context context) {
         return getUserManager(context).getString(PARAM_TOKEN, null);
     }
 
     /**
      * 设置用户token
+     *
      * @param token 要设置成的token
      */
     public static void setToken(Context context, String token) {
-        SharedPreferences.Editor editor =getUserManager(context).edit();
+        SharedPreferences.Editor editor = getUserManager(context).edit();
         editor.putString(PARAM_TOKEN, token);
         editor.apply();
     }
 
     //获取用户uid，如果没有则返回0
-    public static int getUid(Context context) {
-        return getUserManager(context).getInt(PARAM_UID, 0);
+    public static long getUid(Context context) {
+        return getUserManager(context).getLong(PARAM_UID, 0l);
     }
 
     /**
      * 设置用户token
+     *
      * @param uid 要设置成的uid
      */
     public static void setUid(Context context, int uid) {
-        SharedPreferences.Editor editor =getUserManager(context).edit();
-        editor.putInt(PARAM_UID, uid);
+        SharedPreferences.Editor editor = getUserManager(context).edit();
+        editor.putLong(PARAM_UID, uid);
         editor.apply();
     }
 }

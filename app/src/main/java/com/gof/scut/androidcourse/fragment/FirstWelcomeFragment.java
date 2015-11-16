@@ -18,7 +18,7 @@ import com.gof.scut.androidcourse.activity.LoginActivity;
 import com.gof.scut.androidcourse.activity.MainActivity;
 import com.gof.scut.androidcourse.storage.XManager;
 
-public class FirstWelcomeFragment extends Fragment implements View.OnTouchListener{
+public class FirstWelcomeFragment extends Fragment implements View.OnTouchListener {
 
     private ImageSwitcher imgSwitcher;
     //欢迎页的图片资源id
@@ -43,7 +43,7 @@ public class FirstWelcomeFragment extends Fragment implements View.OnTouchListen
 
     private void initData() {
         imgIds = new int[]{R.drawable.welcome_img1, R.drawable.welcome_img2, R.drawable.welcome_img3};
-        currentPosition  = 0;
+        currentPosition = 0;
     }
 
     private void initUI(View view) {
@@ -75,7 +75,7 @@ public class FirstWelcomeFragment extends Fragment implements View.OnTouchListen
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 downX = event.getX();
                 break;
@@ -99,11 +99,10 @@ public class FirstWelcomeFragment extends Fragment implements View.OnTouchListen
 
                 //从左往右拖动，回到前一张
                 if (upX - downX > 0) {
-                    if (currentPosition > 0){
+                    if (currentPosition > 0) {
                         imgSwitcher.setImageResource(imgIds[--currentPosition]);
                         return true;
-                    }
-                    else {
+                    } else {
                         return false;
                     }
                 }
