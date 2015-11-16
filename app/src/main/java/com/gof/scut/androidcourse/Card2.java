@@ -35,6 +35,8 @@ public class Card2 extends Model {
     public String phonenumber;
     @Column(name = "company")
     private String company;
+    @Column(name = "color")
+    private int color;
 
     public static Card2 insertOrUpdate(JSONObject data) {
         Card2 card = null;
@@ -53,6 +55,7 @@ public class Card2 extends Model {
                 card.company = data.getString("company");
                 card.name = data.getString("name");
                 card.phonenumber = data.getString("phone");
+                card.color = data.getInt("color");
                 card.save();
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -86,7 +89,15 @@ public class Card2 extends Model {
     }
 
     public int getBackgroundColor() {
-        return Color.WHITE;
+        //return Color.WHITE;
+        switch (this.color){
+            case 1:return R.color.blue;
+            case 2:return R.color.green;
+            case 3:return R.color.yellow;
+            case 4:return R.color.pink;
+            case 5:return R.color.white;
+            default: return R.color.white;
+        }
     }
 
     public String getCompany() {
@@ -106,7 +117,15 @@ public class Card2 extends Model {
     }
 
     public int getTextColor() {
-        return Color.BLACK;
+        //return Color.BLACK;
+        switch (this.color){
+            case 1:
+            case 2:
+            case 3:return R.color.white;
+            case 4:
+            case 5:
+            default:return R.color.black;
+        }
     }
 
     public long getUserid() {

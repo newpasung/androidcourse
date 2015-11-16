@@ -154,8 +154,8 @@ public class MainActivity extends Activity {
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-            int cardBgColor = card2s.get(position).getBackgroundColor();
-            int cardTextColor = card2s.get(position).getTextColor();
+            int cardBgColor = getResources().getColor(card2s.get(position).getBackgroundColor());
+            int cardTextColor = getResources().getColor(card2s.get(position).getTextColor());
             ((MyHolder) holder).cardView.setCardBackgroundColor(cardBgColor);
             ((MyHolder) holder).textView.setTextColor(cardTextColor);
             ((MyHolder) holder).mTvphone.setTextColor(cardTextColor);
@@ -230,7 +230,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onFailure(String message, String for_param) {
-                Toast.makeText(MainActivity.this, "fetching failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
                 if (dialog.isShowing()) {
                     dialog.dismiss();
                 }
